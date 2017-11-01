@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  rateable: one
+  spud_score: 9.99
+  user_id: 1
+
+two:
+  rateable: two
+  spud_score: 9.99
+  user_id: 1
