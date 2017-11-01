@@ -1,9 +1,24 @@
 <div class="container">
-  <div class="homepage-headline">
-    <h1> ROTTEN POTATOES </h1>
-  </div>
-</div>
-
-<div class="homepage-content">
-  <p>Here's all the content</p>
+  <div class="homepage">
+    <h1> Rotten_<span style="color:red;">Potatoes</span> </h1>
+    <div class="row homepage-content">
+      <div class="col-sm-2">
+        <h4>By Genre</h4>
+        <% @genres.each do |genre| %>
+          <%= genre.name %><br>
+        <% end %>
+      </div>
+      <div class="col-sm-5">
+        <h4>In theaters now</h4>
+        <% @in_theaters.each do |movie| %>
+          <%= link_to movie.title, movie_path(:id => movie.id) %> - <%= movie.release %><br>
+        <% end %>
+      </div>
+      <div class="col-sm-5">
+        <h4>Coming Soon</h4>
+        <% @coming_soon.each do |movie| %>
+        <%= link_to movie.title, movie_path(:id => movie.id) %> - <%= movie.release %><br>
+        <% end %>
+      </div>
+    </div>
 </div>
