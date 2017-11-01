@@ -17,9 +17,8 @@ module MoviesHelper
     in_theaters = []
     all = Movie.all
     all.each do |movie|
-      # this logic isn't complete
-      # shows all movies release before today as 'in theaters'
-      if movie.release < Date.today
+      #lists movies that came out in the last month
+      if movie.release.between?(Date.today.prev_month, Date.today)
         in_theaters << movie
       end
     end
