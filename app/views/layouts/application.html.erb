@@ -3,6 +3,9 @@
   <head>
     <title>RottenPotatoes</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+
+    <!-- <link rel="stylesheet" type="text/css" href="application.css"> -->
+
     <%= csrf_meta_tags %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
@@ -11,18 +14,27 @@
 
   <body>
     <nav class="navbar navbar-toggleable-md navbar-light bg-faded">
-    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-    </button>
-    <a class="navbar-brand" id="home-button" href="#">Home</a>
+      <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <a class="navbar-brand" id="home-button" href="#">Rotten Potatoes</a>
 
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <ul class="navbar-nav mr-auto">
-      <li class="nav-item">
-        <a class="nav-link" href="#">Genres</a>
-      </li>
+      <%= form_tag(movies_path, :method => "get", id: "search-form") do %>
+        <%= text_field_tag :search, params[:search], placeholder: "Search Movies" %>
+        <%= submit_tag "Search", :name => nil %>
+      <% end %>
+
+
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="#">Genres</a>
+          </li>
           <li class="my-2 my-sm-0">
-            <a class="nav-link" href="#">Profile</a>
+            <a  class="nav-link" href="#">login<span class="sr-only">(current)</span></a>
+          </li>
+          <li class="my-2 my-sm-0">
+            <a class="nav-link" href="#">register</a>
           </li>
         </ul>
       </div>
