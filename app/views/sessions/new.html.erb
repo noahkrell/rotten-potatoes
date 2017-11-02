@@ -2,16 +2,7 @@
 
 <%= form_with scope: :session, url: login_path, local: true do |form| %>
 
-  <% if @user.errors.any? %>
-    <div class="error_messages">
-      <h2>Form is invalid.</h2>
-      <ul>
-        <% @user.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
+  <h3><%= @errors if @errors %></h3>
 
   <p>
     <%= form.label :email %>
