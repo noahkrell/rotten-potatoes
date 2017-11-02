@@ -31,13 +31,24 @@
          <!--  <li class="nav-item">
             <a class="nav-link" href="#">genres</a>
           </li> -->
-          <li class="my-2 my-sm-0">
-            <%= link_to "login", login_path, class: "nav-link" %>
-            <span class="sr-only">(current)</span>
-          </li>
-          <li class="my-2 my-sm-0">
-            <%= link_to "register", new_user_path, class: "nav-link" %>
-          </li>
+          <% if current_user %>
+            <li class="my-2 my-sm-0">
+              <%= link_to "logout", logout_path, method: 'delete', class: "nav-link" %>
+              <span class="sr-only">(current)</span>
+            </li>
+            <li class="my-2 my-sm-0">
+              <%= link_to "profile", current_user, class: "nav-link" %>
+              <span class="sr-only">(current)</span>
+            </li>
+          <% else %>
+            <li class="my-2 my-sm-0">
+              <%= link_to "login", login_path, class: "nav-link" %>
+              <span class="sr-only">(current)</span>
+            </li>
+            <li class="my-2 my-sm-0">
+              <%= link_to "register", new_user_path, class: "nav-link" %>
+            </li>
+          <% end %>
         </ul>
       </div>
     </nav>
