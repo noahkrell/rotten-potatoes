@@ -9,7 +9,7 @@
 
 <div class="container">
   <div class="homepage">
-    <h1> Rotten_<span style="color:red;">Potatoes</span> </h1>
+    <h1><%= image_tag "potatobig.png" %> Rotten_<span style="color:red;">Potatoes</span> </h1>
     <div class="row homepage-content">
       <div class="col-sm-2">
         <h4>By Genre</h4>
@@ -20,13 +20,14 @@
       <div class="col-sm-5">
         <h4>In theaters now</h4>
         <% @in_theaters.each do |movie| %>
-          <%= link_to movie.title, movie_path(:id => movie.id) %> - <%= movie.release %><br>
+          <%= link_to movie.title, movie_path(:id => movie.id) %> | 
+          <%= image_tag "potato.png" %><span class="spud_score"><%=movie.average_spud_score%></span> | Release: <%= movie.release.strftime("%m/%d/%Y") %><br>
         <% end %>
       </div>
       <div class="col-sm-5">
         <h4>Coming Soon</h4>
         <% @coming_soon.each do |movie| %>
-        <%= link_to movie.title, movie_path(:id => movie.id) %> - <%= movie.release %><br>
+        <%= link_to movie.title, movie_path(:id => movie.id) %> | <%= image_tag "potato.png" %><span class="spud_score"><%=movie.average_spud_score%></span> | Release: <%= movie.release.strftime("%m/%d/%Y") %><br>
         <% end %>
       </div>
     </div>

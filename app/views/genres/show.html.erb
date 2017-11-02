@@ -1,9 +1,23 @@
 <div class="container">
   <div class="homepage">
-    <h1> Rotten_<span style="color:red;">Potatoes</span> </h1>
-    <h2><%=@genre.name%></h2>
-    <% @movies_in_genre.each do |movie| %>
-      <%= link_to movie.title, movie_path(:id => movie.id) %><br>
-    <% end %>
+    <h2><%=@genre.name%></h2><br>
+    <div class="row">
+      <div class="col-sm-6">
+        <h3> In Theaters Now </h3>
+        <% @movies_in_genre.each do |movie| %>
+          <% if movie.in_theaters? %>
+            <%= link_to movie.title, movie_path(:id => movie.id) %> <strong>|</strong> <%= image_tag "potato.png" %><span class="spud_score"><%=movie.average_spud_score%></span> <strong>|</strong> Release: <%= movie.release.strftime("%m/%d/%Y") %><br>
+          <% end %>
+        <% end %>
+      </div>
+      <div class="col-sm-6">
+        <h3> Coming Soon </h3>
+          <% @movies_in_genre.each do |movie| %>
+            <% if movie.coming_soon? %>
+              <%= link_to movie.title, movie_path(:id => movie.id) %> <strong>|</strong> <%= image_tag "potato.png" %><span class="spud_score"><%=movie.average_spud_score%></span> <strong>|</strong> Release: <%= movie.release.strftime("%m/%d/%Y") %><br>
+            <% end %>
+          <% end %>
+      </div>
+    </div>
   </div>
 </div>
