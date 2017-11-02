@@ -1,1 +1,42 @@
-<h1> <%= @movie.title %> </h1>
+<div class="row">
+  <div class="col-sm-6">
+    <div class="movie-details">
+      <h1><%= @movie.title %></h1>
+      <p>Directed by: <%= @movie.director %></p>
+      <p>Released: <%= @movie.release %></p>
+      <p><%= @movie.runtime %> mins | <%= @movie.mpaa_rating %></p>
+      <p class="description"><%= @movie.description %></p>
+    </div>
+
+    <div class="critic-reviews">
+      <h3>Trusted Critic Reviews</h3>
+      <% @movie.reviews.each do |review| %>
+        <% if review.user.critic %>
+          <%= review.description %>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+
+
+
+  <div class="col-sm-6">
+    <div>
+      This is where our pic/trailer will go
+    </div>
+
+    <div>
+      This is where our SPUD-O-METER will go
+    </div>
+
+    <div>
+      <h3>User Reviews</h3>
+      <% @movie.reviews.each do |review| %>
+        <% if review.user.critic == false %>
+          <%= review.description %>
+        <% end %>
+        <%= review.description %>
+      <% end %>
+    </div>
+  </div>
+</div>
