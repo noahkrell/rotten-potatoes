@@ -45,10 +45,8 @@ genre = ["Drama", "Action", "Horror", "Comedy", "Documentary", "SciFi"]
 
 
 # genre_movies
-movie_ids = [1..10]
-
-movie_ids.each do |id|
-  GenreMovie.create( movie_id: id,
+10.times do |i|
+  GenreMovie.create( movie_id: i,
                     genre_id: rand(1..6))
 end
 
