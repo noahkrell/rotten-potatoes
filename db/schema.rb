@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171101193924) do
+ActiveRecord::Schema.define(version: 20171102154839) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -40,19 +40,11 @@ ActiveRecord::Schema.define(version: 20171101193924) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "ratings", force: :cascade do |t|
-    t.integer "rateable_id"
-    t.string "rateable_type"
-    t.decimal "spud_score"
-    t.integer "user_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "reviews", force: :cascade do |t|
     t.text "description"
     t.integer "movie_id", null: false
     t.integer "user_id", null: false
+    t.decimal "spud_score", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -63,6 +55,13 @@ ActiveRecord::Schema.define(version: 20171101193924) do
     t.string "password_hash", null: false
     t.string "username", null: false
     t.boolean "critic"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "votes", force: :cascade do |t|
+    t.integer "review_id"
+    t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

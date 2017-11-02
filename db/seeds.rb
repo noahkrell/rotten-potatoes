@@ -28,7 +28,7 @@ end
 
 # users
 
-5.times do
+10.times do
   user = User.create( name:Faker::Name.name,
                       username: Faker::Internet.user_name,
                       email: Faker::Internet.safe_email,
@@ -54,24 +54,23 @@ end
 
 # reviews
 
-50.times do
-  review = Review.create( description: Faker::Hipster.paragraph,
-                          movie_id: rand(1..10),
-                          user_id: rand(1..5))
+10.times do |i|
+  Review.create(description: Faker::Hipster.paragraph,
+                movie_id: i,
+                user_id: i,
+                spud_score: [1, 2, 3, 4, 5, 1.5, 2.5, 3.5, 4.5].sample)
 end
 
-# ratings
+# votes
 
-25.times do
-  rating = Rating.create( rateable_type: :Movie,
-                          rateable_id: rand(1..10),
-                          user_id: rand(1..5),
-                          spud_score: [1, 2, 3, 4, 5, 1.5, 2.5, 3.5, 4.5].sample )
-end
+Vote.create(user_id: 1,
+            review_id: 2)
 
-25.times do
-  rating = Rating.create( rateable_type: :Review,
-                          rateable_id: rand(1..50),
-                          user_id: rand(1..5),
-                          spud_score: [1, 2, 3, 4, 5, 1.5, 2.5, 3.5, 4.5].sample )
-end
+Vote.create(user_id: 3,
+            review_id: 2)
+
+Vote.create(user_id: 2,
+            review_id: 4)
+
+Vote.create(user_id: 2,
+            review_id: 5)

@@ -4,6 +4,7 @@ class CreateReviews < ActiveRecord::Migration[5.1]
       t.text :description
       t.integer :movie_id, { null: false }
       t.integer :user_id, { null: false }
+      t.decimal :spud_score, { null: false }
 
       t.timestamps
     end
