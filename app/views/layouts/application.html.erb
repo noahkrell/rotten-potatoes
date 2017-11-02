@@ -18,16 +18,17 @@
         <span class="navbar-toggler-icon"></span>
       </button>
       <!-- <a class="navbar-brand" id="home-button" href="#">Rotten Potatoes</a> -->
-      <%= link_to "Rotten Potatoes", root_path, class: "navbar-brand", id: "home-button"%>
+      <%= link_to "Rotten_Potatoes", root_path, class: "navbar-brand", id: "home-button"%>
+      <div class="input-group">
+        <%= form_tag(movies_path, :method => "get", class: "search-form") do %>
+          <%= text_field_tag :search, params[:search], placeholder: "Search Movies", class: "search-box"%>
+          <%= submit_tag "Search", :name => nil, style: "display:inline;" %>
+        <% end %>
+      </div>
 
-      <%= form_tag(movies_path, :method => "get", id: "search-form") do %>
-        <%= text_field_tag :search, params[:search], placeholder: "Search Movies" %>
-        <%= submit_tag "Search", :name => nil %>
-      <% end %>
 
-
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav mr-auto">
+      <div class="collapse navbar-collapse link-width" id="navbarSupportedContent">
+        <ul class="navbar-nav link-width" >
          <!--  <li class="nav-item">
             <a class="nav-link" href="#">genres</a>
           </li> -->
