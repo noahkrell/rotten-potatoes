@@ -27,7 +27,12 @@ class Movie < ApplicationRecord
   def average_spud_score
     review_count = self.reviews.count
     score_total = self.reviews.map(&:spud_score).inject(0, &:+)
-    (score_total / review_count).to_f
+    if review_count > 0
+      average = (score_total / review_count).to_f
+    else
+      0
+    end
+    return average
   end
 
   def coming_soon?
