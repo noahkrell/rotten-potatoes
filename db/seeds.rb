@@ -16,18 +16,27 @@
  #                    release: Date.today)
  # movie.save
 
-in_theaters = Tmdb::Movie.now_playing.results
-upcoming_movies = Tmdb::Movie.upcoming.results
+# in_theaters = Tmdb::Movie.now_playing.results
+# upcoming_movies = Tmdb::Movie.upcoming.results
 
 
-in_theaters.each do |movie|
-  movie = Movie.create( api_id: movie.id )
+# in_theaters.each do |movie|
+#   movie = Movie.create( api_id: movie.id )
+# end
+
+# upcoming_movies.each do |movie|
+#   movie = Movie.create( api_id: movie.id )
+# end
+
+
+genres = [28,12,16,35,80,99,18,10751,14,36,27,10402,9648,10749,878,10770,53,10752,37]
+movies = []
+genres.each do |genre_id|
+  movies += Tmdb::Genre.movies(genre_id).results
 end
-
-upcoming_movies.each do |movie|
-  movie = Movie.create( api_id: movie.id )
+movies.each do |movie|
+  Movie.create(api_id: movie.id)
 end
-
 # users
 
 100.times do
@@ -47,23 +56,10 @@ end
 #                 spud_score: [1, 2, 3, 4, 5, 1.5, 2.5, 3.5, 4.5].sample)
 # end
 
-100.times do |i|
+1000.times do |i|
   Review.create(description: Faker::Hipster.paragraph,
                 movie_id: Movie.all.sample.id,
                 user_id: i,
                 spud_score: [1, 2, 3, 4, 5, 1.5, 2.5, 3.5, 4.5].sample)
 end
 
-# votes
-
-# Vote.create(user_id: 1,
-#             review_id: 2)
-
-# Vote.create(user_id: 3,
-#             review_id: 2)
-
-# Vote.create(user_id: 2,
-#             review_id: 4)
-
-# Vote.create(user_id: 2,
-#             review_id: 5)
