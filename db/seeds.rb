@@ -16,6 +16,11 @@
  #                    release: Date.today)
  # movie.save
 
+upcoming_movies = Tmdb::Movie.upcoming.results
+genres = Tmdb::Genre.movie_list.map { |genre| genre.name }
+binding.pry
+
+
 10.times do
 
   movie = Movie.create( title: Faker::Book.title,

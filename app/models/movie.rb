@@ -39,8 +39,9 @@ class Movie < ApplicationRecord
     coming_soon.include?(self)
   end
 
-  def in_theaters?
-    in_theaters_now.include?(self)
-  end
+  # def in_theaters?
+  #   self.release_date.between?(Date.today.prev_month, Date.today)
+  #   in_theaters_now.include?(self)
+  # end
 
 end

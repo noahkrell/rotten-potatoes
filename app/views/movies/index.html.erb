@@ -20,7 +20,7 @@
       <div class="col-sm-5">
         <h4>In theaters now</h4>
         <% @in_theaters.each do |movie| %>
-          <%= link_to movie.title, movie_path(:id => movie.id) %> | 
+          <%= link_to movie.title, movie_path(:id => movie.id) %> |
           <%= image_tag "potato.png" %><span class="spud_score"><%=movie.average_spud_score%></span> | Release: <%= movie.release.strftime("%m/%d/%Y") %><br>
         <% end %>
       </div>

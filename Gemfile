@@ -33,7 +33,8 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'faker'
 
 gem 'pry'
-
+gem 'themoviedb-api'
+# gem 'themoviedb'
 
 
 # Use Capistrano for deployment

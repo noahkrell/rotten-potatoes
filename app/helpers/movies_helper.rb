@@ -25,4 +25,8 @@ module MoviesHelper
     in_theaters
   end
 
+  def in_theaters?
+    release_date.to_date.between?(Date.today.prev_month, Date.today)
+  end
+
 end
