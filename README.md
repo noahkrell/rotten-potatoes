@@ -1,9 +1,20 @@
 # rotten-potatoes
 
-rails generate model NAME [field[:type][:index] field[:type][:index]] [options]
+## Description:
+[Rotten Potatoes](https://rotten-potatoes-dbc.herokuapp.com) -- A website to view and rate movies a la Rotten Tomatoes. Built on Rails, deployed on Heroku. API credit [The Movie DB](https://www.themoviedb.org/).
+
+## Tech:
+Ruby on Rails
+PostgreSQL db
+Bootstrap
+
+## Developers:
+[Diem McLaughlin](https://github.com/diemella)
+[Noah Krell](https://github.com/noahkrell)
+[Peter Haley](https://github.com/pblhaley)
+[Brittany Snyder](https://github.com/snyderbc)
 
 
-<!-- User.first.ratings.where(rateable_type: "Movie") do |rating| puts rating end -->
 
 
 
