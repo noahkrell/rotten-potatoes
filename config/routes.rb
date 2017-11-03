@@ -15,7 +15,11 @@
 #           DELETE /users/:id(.:format)      users#destroy
 #    movies GET    /movies(.:format)         movies#index
 #     movie GET    /movies/:id(.:format)     movies#show
+#    genres GET    /genres(.:format)         genres#index
+#     genre GET    /genres/:id(.:format)     genres#show
+#   reviews POST   /reviews(.:format)        reviews#create
 #
+
 
 Rails.application.routes.draw do
   root "movies#index"
@@ -31,5 +35,7 @@ Rails.application.routes.draw do
 
   get '/genres' => "genres#index"
   get '/genres/:id' => "genres#show", as: "genre"
+
+  post '/reviews' => "reviews#create"
 
 end
