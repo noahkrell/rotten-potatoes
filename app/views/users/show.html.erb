@@ -1,7 +1,9 @@
-<h2>Welcome, <%= @user.name %>!</h2>
+<h2><%= @user.name %>'s Profile</h2>
 
 <ul>
   <% @user.reviews.each do |review| %>
     <li><%= review.description %></li>
   <% end %>
 </ul>
+
+<%= link_to 'Edit Profile', edit_user_path(@user) %> | <%= link_to 'Delete Account', user_path(@user), method: :delete, data: { confirm: 'Are you sure?' } %>
