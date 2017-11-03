@@ -22,6 +22,10 @@ class MoviesController < ApplicationController
   def show
     @movie = Tmdb::Movie.detail(params[:id])
     @reviews = Movie.find_by(api_id: @movie.id).reviews
+    path = Tmdb::Movie.posters(params[:id]).first.file_path
+    @image_url = "http://image.tmdb.org/t/p/w342/" + path
+    our_movie = Movie.find_by(api_id: @movie.id)
+    @spud_score = our_movie.average_spud_score
   end
 
 end

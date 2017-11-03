@@ -8,6 +8,7 @@
       <p>Released: <%= @movie.release_date %></p>
       <p><%= @movie.runtime %> mins</p>
       <p class="description"><%= @movie.overview %></p>
+      <%= image_tag "potatobig.png" %><strong>Spud Score: </strong><%=@spud_score%> || <strong> Total Reviews: </strong><%=@reviews.count%>
       <% if current_user %>
   <% if flash[:notice] %>
     <p style="color:red;"><%= flash[:notice] %></p>
@@ -57,10 +58,7 @@
   </div>
   <div class="col-sm-6">
     <div>
-      This is where our pic/trailer will go
-    </div>
-    <div>
-      This is where our SPUD-O-METER will go
+    <img src=<%=@image_url%> alt="Movie Poster">
     </div>
   </div>
 </div>
@@ -72,6 +70,7 @@
       <% @reviews.each do |review| %>
         <% if review.user.critic %>
           <%= review.description %><br>
+          <strong>Spud Score:</strong> <%= review.spud_score %><br>
           <strong><%= review.user.username %></strong><br>
           <%= review.created_at %><br><br>
         <% end %>
@@ -84,6 +83,7 @@
       <% @reviews.each do |review| %>
         <% if review.user.critic.nil? || review.user.critic == false %>
           <%= review.description %><br>
+          <strong>Spud Score:</strong> <%= review.spud_score %><br>
           <strong><%= review.user.username %></strong><br>
           <%= review.created_at %><br><br>
         <% end %>
