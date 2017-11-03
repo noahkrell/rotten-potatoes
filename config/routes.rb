@@ -37,5 +37,6 @@ Rails.application.routes.draw do
   get '/genres/:id' => "genres#show", as: "genre"
 
   post '/reviews' => "reviews#create"
+  post '/movies/:id' => "votes#create"
 
 end
