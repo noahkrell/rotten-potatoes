@@ -19,10 +19,6 @@ class Movie < ApplicationRecord
 
   include MoviesHelper
 
-  def self.search(search)
-    where("title ILIKE ? OR director ILIKE ?", "%#{search}%", "%#{search}%")
-  end
-
   def average_spud_score
     review_count = self.reviews.count
     score_total = self.reviews.map(&:spud_score).inject(0, &:+)
@@ -33,14 +29,5 @@ class Movie < ApplicationRecord
     end
     return average
   end
-
-  def coming_soon?
-    coming_soon.include?(self)
-  end
-
-  # def in_theaters?
-  #   self.release_date.between?(Date.today.prev_month, Date.today)
-  #   in_theaters_now.include?(self)
-  # end
 
 end

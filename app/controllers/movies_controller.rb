@@ -7,12 +7,15 @@ class MoviesController < ApplicationController
     @coming_soon = Tmdb::Movie.upcoming.results
     @in_theaters = Tmdb::Movie.now_playing.results
     @genres = Tmdb::Genre.movie_list
+    @all_movies = (@coming_soon + @in_theaters).uniq
     if params[:search]
-      # @movies = Movie.all
-      @movies = Movie.search(params[:search]).order("created_at DESC")
-      # binding.pry
-    # else
-    #   @movies = Movie.all.order("created_at DESC")
+      @found_movies = []
+      @all_movies.each do |movie|
+        @movie_details = Tmdb::Movie.detail(movie.id)
+        if @movie_details.title.downcase.include?(params[:search].downcase)
+          @found_movies << @movie_details
+        end
+      end
     end
   end
 

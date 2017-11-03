@@ -1,9 +1,9 @@
-<% if @movies %>
-  <% @movies.each do |movie| %>
-    <li><%= movie.title %></li>
+<% if @found_movies && @found_movies.count > 0 %>
+  <% @found_movies.each do |movie| %>
+    <li><%= link_to movie.title, movie_path(:id => movie.id) %></li>
   <% end %>
 <% end %>
-  <% if @movies && @movies.empty? %>
+  <% if @found_movies && @found_movies.empty? %>
     <h4>There are no movies containing the term '<%= params[:search] %>'.</h4>
   <% end %>
 
