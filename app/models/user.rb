@@ -16,10 +16,12 @@ class User < ApplicationRecord
   has_many :votes
   has_many :reviews
 
+  # before_save { username.downcase }
+  VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
 
   validates :email, :username, :name, presence: true
   validates :email, :username, uniqueness: true
-  # validates_length_of :password_hash, :minimum => 1
+  validates :email, format: { with: VALID_EMAIL_REGEX }
 
   has_secure_password
 
