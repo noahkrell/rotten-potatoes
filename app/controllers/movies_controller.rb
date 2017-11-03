@@ -20,4 +20,5 @@ class MoviesController < ApplicationController
     @movie = Tmdb::Movie.detail(params[:id])
     @reviews = Movie.find_by(api_id: @movie.id).reviews
   end
+
 end

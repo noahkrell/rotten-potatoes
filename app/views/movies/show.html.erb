@@ -4,38 +4,87 @@
       <h1><%= @movie.title %></h1>
       <h5>"<%= @movie.tagline %>..."</h5>
       <p>Released: <%= @movie.release_date %></p>
-      <p><%= @movie.runtime %> mins
+      <p><%= @movie.runtime %> mins</p>
       <p class="description"><%= @movie.overview %></p>
-    </div>
+      <% if current_user %>
+  <% if flash[:notice] %>
+    <p style="color:red;"><%= flash[:notice] %></p>
+  <% end %>
+  <div class="new-review-form ">
+    <%= form_with scope: :review, url: reviews_path, local: true do |form| %>
 
-    <div class="critic-reviews">
-      <h3>Trusted Critic Reviews</h3>
-      <% @reviews.each do |review| %>
-        <% if review.user.critic %>
-          <%= review.description %>
-        <% end %>
-      <% end %>
-    </div>
+    <p>
+      <%= form.hidden_field :movie_id, :value => @movie.id %>
+    </p>
+
+    <p>
+      <%= form.label :Review %><br>
+      <%= form.text_area :description %>
+    </p>
+
+    <p>
+      <%= form.label :Rating %><br>
+      <%= radio_button_tag(:spud_score, 1) %>
+      <%= label_tag(:spud_score, "1") %><span></span>
+      <%= radio_button_tag(:spud_score, 1.5) %>
+      <%= label_tag(:spud_score, "1.5") %>
+      <%= radio_button_tag(:spud_score, 2) %>
+      <%= label_tag(:spud_score, "2") %>
+      <%= radio_button_tag(:spud_score, 2.5) %>
+      <%= label_tag(:spud_score, "2.5") %>
+      <%= radio_button_tag(:spud_score, 3) %>
+      <%= label_tag(:spud_score, "3") %>
+      <%= radio_button_tag(:spud_score, 3.5) %>
+      <%= label_tag(:spud_score, "3.5") %>
+      <%= radio_button_tag(:spud_score, 4) %>
+      <%= label_tag(:spud_score, "4") %>
+      <%= radio_button_tag(:spud_score, 4.5) %>
+      <%= label_tag(:spud_score, "4.5") %>
+      <%= radio_button_tag(:spud_score, 5) %>
+      <%= label_tag(:spud_score, "5") %>
+    </p>
+
+    <p>
+      <%= form.submit 'Submit Review' %>
+    </p>
+    <% end %>
   </div>
 
-
-
+<% end %>
+    </div>
+  </div>
   <div class="col-sm-6">
     <div>
       This is where our pic/trailer will go
     </div>
-
     <div>
       This is where our SPUD-O-METER will go
     </div>
+  </div>
+</div>
 
+<div class="row">
+  <div class="col-sm-6">
+    <div class="critic-reviews">
+      <h3>Trusted Critic Reviews</h3>
+      <% @reviews.each do |review| %>
+        <% if review.user.critic %>
+          <%= review.description %><br>
+          <strong><%= review.user.username %></strong><br>
+          <%= review.created_at %><br><br>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+  <div class="col-sm-6">
     <div>
       <h3>User Reviews</h3>
       <% @reviews.each do |review| %>
-        <% if review.user.critic == false %>
-          <%= review.description %>
+        <% if review.user.critic.nil? || review.user.critic == false %>
+          <%= review.description %><br>
+          <strong><%= review.user.username %></strong><br>
+          <%= review.created_at %><br><br>
         <% end %>
-        <%= review.description %>
       <% end %>
     </div>
   </div>
