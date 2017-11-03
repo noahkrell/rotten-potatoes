@@ -31,21 +31,21 @@
     <p>
       <%= form.label :Rating %><br>
       <%= radio_button_tag(:spud_score, 1) %>
-      <%= label_tag(:spud_score, "1") %><span></span>
+      <%= label_tag(:spud_score, "1") %> |
       <%= radio_button_tag(:spud_score, 1.5) %>
-      <%= label_tag(:spud_score, "1.5") %>
+      <%= label_tag(:spud_score, "1.5") %> |
       <%= radio_button_tag(:spud_score, 2) %>
-      <%= label_tag(:spud_score, "2") %>
+      <%= label_tag(:spud_score, "2") %> |
       <%= radio_button_tag(:spud_score, 2.5) %>
-      <%= label_tag(:spud_score, "2.5") %>
+      <%= label_tag(:spud_score, "2.5") %> |
       <%= radio_button_tag(:spud_score, 3) %>
-      <%= label_tag(:spud_score, "3") %>
+      <%= label_tag(:spud_score, "3") %> |
       <%= radio_button_tag(:spud_score, 3.5) %>
-      <%= label_tag(:spud_score, "3.5") %>
+      <%= label_tag(:spud_score, "3.5") %> |
       <%= radio_button_tag(:spud_score, 4) %>
-      <%= label_tag(:spud_score, "4") %>
+      <%= label_tag(:spud_score, "4") %> |
       <%= radio_button_tag(:spud_score, 4.5) %>
-      <%= label_tag(:spud_score, "4.5") %>
+      <%= label_tag(:spud_score, "4.5") %> |
       <%= radio_button_tag(:spud_score, 5) %>
       <%= label_tag(:spud_score, "5") %>
     </p>
@@ -72,6 +72,7 @@
       <h3>Trusted Critic Reviews</h3>
       <% @reviews.each do |review| %>
         <% if review.user.critic %>
+        <%= review.votes.count %><%= button_to "Upvote", scope: :vote, url: '/votes/new', vote_data: { review_id: review.id, user_id: current_user.id } %>
           <%= review.description %><br>
           <strong>Spud Score:</strong> <%= review.spud_score %><br>
           <strong><%= review.user.username %></strong><br>
@@ -85,9 +86,7 @@
       <h3>User Reviews</h3>
       <% @reviews.each do |review| %>
         <% if review.user.critic.nil? || review.user.critic == false %>
-          <form method="post" action='/posts/<%= post.id %>/vote' class="inline">
-            <button type="submit" name="submit_param" value="submit_value" class="fa fa-sort-desc vote-button upvote-button"></button>
-          </form>
+          <%= review.votes.count %><%= button_to "Upvote", scope: :vote, url: '/votes/new', vote_data: { review_id: review.id, user_id: current_user.id } %>
           <%= review.description %><br>
           <strong>Spud Score:</strong> <%= review.spud_score %><br>
           <strong><%= review.user.username %></strong><br>

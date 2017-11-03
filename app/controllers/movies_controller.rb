@@ -21,6 +21,7 @@ class MoviesController < ApplicationController
 
   def show
     @movie = Tmdb::Movie.detail(params[:id])
+    # binding.pry
     @reviews = Movie.find_by(api_id: @movie.id).reviews
     @movie_genre_names = []
     @movie.genres.each do |genre|
@@ -29,7 +30,9 @@ class MoviesController < ApplicationController
     path = Tmdb::Movie.posters(params[:id]).first.file_path
     @image_url = "http://image.tmdb.org/t/p/w342/" + path
     our_movie = Movie.find_by(api_id: @movie.id)
-    @spud_score = our_movie.average_spud_score.round(2)
+    if our_movie.reviews.count > 0
+     @spud_score = our_movie.average_spud_score.round(2)
+    end
   end
 
 end
