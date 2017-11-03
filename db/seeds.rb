@@ -39,7 +39,7 @@ movies.each do |movie|
 end
 # users
 
-100.times do
+1000.times do
   User.create( name:Faker::Name.name,
                       username: Faker::Internet.user_name,
                       email: Faker::Internet.safe_email,
