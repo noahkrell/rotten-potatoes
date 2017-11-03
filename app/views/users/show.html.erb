@@ -1,9 +1,12 @@
-<h2><%= @user.name %>'s Profile</h2>
+<div class="user-container" id="profile">
 
-<ul>
-  <% @user.reviews.each do |review| %>
-    <li><%= review.description %></li>
-  <% end %>
-</ul>
+  <h2><%= @user.name %>'s Profile</h2>
+    <p>Reviews:</p>
+    <% @user.reviews.each do |review| %>
+      <p><i><%= review.description %></i></p><p><b>Rated: <%= review.spud_score.to_f %></b> | <%= link_to Tmdb::Movie.detail(review.movie.api_id).title, movie_path(review.movie.api_id) %></p><br><br>
+    <% end %>
 
-<%= link_to 'Edit Profile', edit_user_path(@user) %> | <%= link_to 'Delete Account', user_path(@user), method: :delete, data: { confirm: 'Are you sure?' } %>
+  <br><br>
+  <%= link_to 'Edit Profile', edit_user_path(@user) %> | <%= link_to 'Delete Account', user_path(@user), method: :delete, data: { confirm: 'Are you sure?' } %>
+
+</div>

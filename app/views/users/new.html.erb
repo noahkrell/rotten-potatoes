@@ -1,39 +1,47 @@
-<h2>Registration Form</h2>
-<%= form_with scope: :user, url: users_path, local: true do |form| %>
+<div class="user-container" id="registration">
 
-  <% if @user.errors.any? %>
-    <div class="error_messages">
-      <h2>Form is invalid.</h2>
-      <ul>
-        <% @user.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
-        <% end %>
-      </ul>
-    </div>
+  <h2>Registration Form</h2>
+  <%= form_with scope: :user, url: users_path, local: true do |form| %>
+
+    <% if @user.errors.any? %>
+      <div class="error_messages">
+        <br>
+        <h3>Rotten..</h3>
+        <ul>
+          <% @user.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <br>
+
+    <p>
+      <%= form.label "Name: " %><br>
+      <%= form.text_field :name %>
+    </p>
+
+    <p>
+      <%= form.label "Email: " %><br>
+      <%= form.text_field :email %>
+    </p>
+
+    <p>
+      <%= form.label "Username: " %><br>
+      <%= form.text_field :username %>
+    </p>
+
+
+    <p>
+      <%= form.label "Password: " %><br>
+      <%= form.password_field :password %>
+    </p>
+
+    <p>
+      <%= form.submit "Register" %>
+    </p>
+
   <% end %>
 
-  <p>
-    <%= form.label :name %><br>
-    <%= form.text_field :name %>
-  </p>
-
-  <p>
-    <%= form.label :username %><br>
-    <%= form.text_field :username %>
-  </p>
-
-  <p>
-    <%= form.label :email %><br>
-    <%= form.text_field :email %>
-  </p>
-
-  <p>
-    <%= form.label :password %><br>
-    <%= form.password_field :password %>
-  </p>
-
-  <p>
-    <%= form.submit %>
-  </p>
-
-<% end %>
+</div>

@@ -1,40 +1,43 @@
-<h2>Edit Profile</h2>
+<div class="user-container" id="edit-user">
+  <h2>Edit Profile</h2>
 
-<%= form_for(@user) do |form| %>
+  <%= form_for(@user) do |form| %>
 
-  <% if @user.errors.any? %>
-    <div class="error_messages">
-      <h2>Form is invalid.</h2>
-      <ul>
-        <% @user.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
-        <% end %>
-      </ul>
-    </div>
+    <% if @user.errors.any? %>
+      <div class="error_messages">
+        <h2>Form is invalid.</h2>
+        <ul>
+          <% @user.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <p>
+      <%= form.label :name %><br>
+      <%= form.text_field :name %>
+    </p>
+
+    <p>
+      <%= form.label :username %><br>
+      <%= form.text_field :username %>
+    </p>
+
+    <p>
+      <%= form.label :email %><br>
+      <%= form.text_field :email %>
+    </p>
+
+    <p>
+      <%= form.label :password %><br>
+      <%= form.password_field :password %>
+    </p>
+
+    <p>
+      <%= form.submit %>
+    </p>
+
   <% end %>
 
-  <p>
-    <%= form.label :name %><br>
-    <%= form.text_field :name %>
-  </p>
-
-  <p>
-    <%= form.label :username %><br>
-    <%= form.text_field :username %>
-  </p>
-
-  <p>
-    <%= form.label :email %><br>
-    <%= form.text_field :email %>
-  </p>
-
-  <p>
-    <%= form.label :password %><br>
-    <%= form.password_field :password %>
-  </p>
-
-  <p>
-    <%= form.submit %>
-  </p>
-
-<% end %>
+</div>
