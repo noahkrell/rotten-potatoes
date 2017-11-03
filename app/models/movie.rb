@@ -19,9 +19,9 @@ class Movie < ApplicationRecord
 
   include MoviesHelper
 
-  def self.search(search)
-    where("title ILIKE ? OR director ILIKE ?", "%#{search}%", "%#{search}%")
-  end
+  # def self.search(search)
+  #   where("title ILIKE ?", "%#{search}%")
+  # end
 
   def average_spud_score
     review_count = self.reviews.count
