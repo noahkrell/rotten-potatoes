@@ -1,8 +1,5 @@
 class GenresController < ApplicationController
 
-  # def index
-  #   @genres = Genre.all
-  # end
 
   def show
     @movies_in_genre = Tmdb::Genre.movies(params[:id]).results

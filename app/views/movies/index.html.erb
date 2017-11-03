@@ -1,12 +1,3 @@
-<% if @found_movies && @found_movies.count > 0 %>
-  <% @found_movies.each do |movie| %>
-    <li><%= link_to movie.title, movie_path(:id => movie.id) %></li>
-  <% end %>
-<% end %>
-  <% if @found_movies && @found_movies.empty? %>
-    <h4>There are no movies containing the term '<%= params[:search] %>'.</h4>
-  <% end %>
-
 <div class="container">
   <div class="homepage">
     <h1><%= image_tag "potatobig.png" %> Rotten_<span style="color:red;">Potatoes</span> </h1>

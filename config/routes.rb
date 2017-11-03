@@ -38,4 +38,7 @@ Rails.application.routes.draw do
 
   post '/reviews' => "reviews#create"
 
+  get '/searches' => "searches#show"
+  post '/searches' => "searches#show"
+
 end
