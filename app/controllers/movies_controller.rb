@@ -4,8 +4,8 @@ class MoviesController < ApplicationController
   # include Tmdb
 
   def index
-    @coming_soon = coming_soon
-    @in_theaters = in_theaters_now
+    @coming_soon = Tmdb::Movie.upcoming.results
+    @in_theaters = Tmdb::Movie.now_playing.results
     @genres = Tmdb::Genre.movie_list
     if params[:search]
       # @movies = Movie.all
@@ -17,6 +17,6 @@ class MoviesController < ApplicationController
   end
 
   def show
-    @movie = Movie.find(params[:id])
+    @movie = Tmdb::Movie.detail(params[:id])
   end
 end
