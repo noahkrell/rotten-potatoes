@@ -22,6 +22,10 @@ class MoviesController < ApplicationController
   def show
     @movie = Tmdb::Movie.detail(params[:id])
     @reviews = Movie.find_by(api_id: @movie.id).reviews
+    @movie_genre_names = []
+    @movie.genres.each do |genre|
+      @movie_genre_names << genre
+    end
   end
 
 end

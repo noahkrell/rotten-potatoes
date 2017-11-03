@@ -2,9 +2,12 @@
   <div class="col-sm-6">
     <div class="movie-details">
       <h1><%= @movie.title %></h1>
-      <% if @movie.tagline %>
+      <% if !@movie.tagline.empty? %>
         <h5 style="font-style: italic;"><%= @movie.tagline + "..."%></h5>
       <% end %>
+      <p><% @movie_genre_names.each do |genre| %>
+          <%= link_to genre.name, genre_path(:id => genre.id) %> |
+        <% end %></p>
       <p>Released: <%= @movie.release_date %></p>
       <p><%= @movie.runtime %> mins</p>
       <p class="description"><%= @movie.overview %></p>
