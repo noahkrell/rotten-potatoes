@@ -1,3 +1,44 @@
 // Place all the styles related to the users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+.user-container {
+  margin: 20px;
+}
+
+.user-container h2 {
+  color: #A0522D;
+}
+
+#edit-profile {
+  margin: 20px 20px 20px 50px;
+  width: 400px;
+  padding: 20px;
+  border: 2px solid black;
+  box-shadow: 10px 5px 5px black;
+  border-radius: 20px;
+}
+
+#user-login {
+  margin: 50px 20px 20px 50px;
+  width: 250px;
+  padding: 20px;
+  border: 2px solid black;
+  box-shadow: 10px 5px 5px black;
+  border-radius: 20px;
+}
+
+#registration {
+  margin: 50px 20px 20px 50px;
+  width: 340px;
+  padding: 20px;
+  border: 2px solid black;
+  box-shadow: 10px 5px 5px black;
+  border-radius: 20px;
+}
+
+#profile {
+  margin: 50px 20px 20px 50px;
+  font-size: 20px;
+}
