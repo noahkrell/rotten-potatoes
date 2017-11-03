@@ -3,7 +3,7 @@ module MoviesHelper
     upcoming = []
     all = Movie.all
     all.each do |movie|
-      if movie.release > Date.today
+      if movie > Date.today
         upcoming << movie
       end
     end

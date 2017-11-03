@@ -15,27 +15,8 @@ ActiveRecord::Schema.define(version: 20171102154839) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "genre_movies", force: :cascade do |t|
-    t.integer "genre_id"
-    t.integer "movie_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "genres", force: :cascade do |t|
-    t.string "name", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "movies", force: :cascade do |t|
-    t.string "title", null: false
-    t.text "description"
-    t.integer "runtime"
-    t.string "mpaa_rating"
-    t.string "director"
-    t.date "release"
-    t.integer "api_id"
+    t.integer "api_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
