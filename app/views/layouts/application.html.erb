@@ -20,8 +20,9 @@
       <!-- <a class="navbar-brand" id="home-button" href="#">Rotten Potatoes</a> -->
 
       <a href="/"><%= image_tag "potato.png" %></a> <%= link_to "Rotten_Potatoes", root_path, class: "navbar-brand", id: "home-button"%>
+
       <div class="input-group">
-        <%= form_tag(movies_path, :method => "get", class: "search-form") do %>
+        <%= form_tag(searches_path, :method => "post", class: "search-form") do %>
           <%= text_field_tag :search, params[:search], placeholder: "Search Movies", class: "search-box"%>
           <%= submit_tag "Search", :name => nil, style: "display:inline;" %>
         <% end %>

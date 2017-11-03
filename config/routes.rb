@@ -39,4 +39,7 @@ Rails.application.routes.draw do
   post '/reviews' => "reviews#create"
   post '/movies/:id' => "votes#create"
 
+  get '/searches' => "searches#show"
+  post '/searches' => "searches#show"
+
 end
