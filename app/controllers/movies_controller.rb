@@ -7,7 +7,7 @@ class MoviesController < ApplicationController
     @coming_soon = Tmdb::Movie.upcoming.results
     @in_theaters = Tmdb::Movie.now_playing.results
     @genres = Tmdb::Genre.movie_list
-    @all_movies = (@coming_soon + @in_theaters).uniq
+    # @all_movies = (@coming_soon + @in_theaters).uniq
     # if params[:search]
     #   @found_movies = []
     #   @all_movies.each do |movie|
