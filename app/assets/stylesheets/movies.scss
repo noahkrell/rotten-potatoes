@@ -11,13 +11,18 @@
 }
 
 .col-sm-2 {
-  text-align: center;
+  text-align: left;
+  border-left: 1px solid black;
   border-right: 1px solid black;
 }
 
 .col-sm-5 {
-  text-align: center;
+  text-align: left;
   border-right: 1px solid black;
+}
+
+.col-sm-5 h4 {
+  text-align: center;
 }
 
 

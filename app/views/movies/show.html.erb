@@ -2,7 +2,9 @@
   <div class="col-sm-6">
     <div class="movie-details">
       <h1><%= @movie.title %></h1>
-      <h5>"<%= @movie.tagline %>..."</h5>
+      <% if @movie.tagline %>
+        <h5 style="font-style: italic;"><%= @movie.tagline + "..."%></h5>
+      <% end %>
       <p>Released: <%= @movie.release_date %></p>
       <p><%= @movie.runtime %> mins
       <p class="description"><%= @movie.overview %></p>
