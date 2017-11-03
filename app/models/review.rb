@@ -16,5 +16,6 @@ class Review < ApplicationRecord
   belongs_to :user
   has_many :votes
 
+  validates :spud_score, presence: true
   validates :user, uniqueness: { scope: :movie }
 end
