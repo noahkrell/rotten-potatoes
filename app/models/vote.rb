@@ -12,5 +12,5 @@
 class Vote < ApplicationRecord
   belongs_to :user
   belongs_to :review
-  validates_uniqueness_of :user_id
+  validates_uniqueness_of :user, scope: :review
 end
