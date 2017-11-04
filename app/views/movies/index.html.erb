@@ -12,13 +12,13 @@
         <h4>In theaters now</h4>
         <% @in_theaters.each do |movie| %>
           <%= link_to movie.title, movie_path(:id => movie.id) %> |
-          <%= image_tag "potato.png" %><span class="spud_score"><%=movie.average_spud_score%></span> | Release: <%= movie.release_date.to_date %><br>
+          <%= image_tag "potato.png" %><span class="spud_score"><% if convert_to_ours(movie)%><%=convert_to_ours(movie).average_spud_score%><%end%></span> | Release: <%= movie.release_date.to_date %><br>
         <% end %>
       </div>
       <div class="col-sm-5">
         <h4>Coming Soon</h4>
         <% @coming_soon.each do |movie| %>
-        <%= link_to movie.title, movie_path(:id => movie.id) %> | <%= image_tag "potato.png" %><span class="spud_score"><%=movie.average_spud_score%></span> | Release: <%= movie.release_date.to_date %><br>
+        <%= link_to movie.title, movie_path(:id => movie.id) %> | <%= image_tag "potato.png" %><span class="spud_score"><% if convert_to_ours(movie)%><%=convert_to_ours(movie).average_spud_score%><%end%></span> | Release: <%= movie.release_date.to_date %><br>
         <% end %>
       </div>
     </div>

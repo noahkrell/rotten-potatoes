@@ -11,7 +11,7 @@ class ReviewsController < ApplicationController
     @movie = Movie.find_by(:api_id => params[:review][:movie_id].to_i)
     review_hash = {}
     review_hash[:description] = review_params[:description]
-    review_hash[:spud_score] = params[:spud_score].to_i
+    review_hash[:spud_score] = params[:spud_score].to_i if params[:spud_score].to_i > 0
     review_hash[:movie_id] = @movie.id
     review_hash[:user_id] = current_user.id
 
