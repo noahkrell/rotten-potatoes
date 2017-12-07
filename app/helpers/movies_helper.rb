@@ -10,7 +10,12 @@ module MoviesHelper
     upcoming
   end
 
-  def by_genre
+  def convert_to_ours(movie)
+    Movie.find_by(api_id: movie.id)
+  end
+
+  def convert_to_tmd(movie)
+    Tmdb::Movie.detail(movie.api_id)
   end
 
   def in_theaters_now
