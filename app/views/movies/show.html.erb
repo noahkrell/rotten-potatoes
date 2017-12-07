@@ -71,13 +71,23 @@
     <div class="critic-reviews">
       <h3>Trusted Critic Reviews</h3>
       <% @reviews.each do |review| %>
+
         <% if review.user.critic %>
-        <%= review.votes.count %><%= button_to "Upvote", scope: :vote, url: '/votes/new', vote_data: { review_id: review.id, user_id: current_user.id } %>
           <%= review.description %><br>
           <strong>Spud Score:</strong> <%= review.spud_score %><br>
           <strong><%= review.user.username %></strong><br>
-          <%= review.created_at %><br><br>
+          <%= review.created_at %><br>
+
+          <% if !current_user %>
+            <br>
+          <% end %>
+
         <% end %>
+
+        <% if current_user && review.user.critic %>
+        <%= review.votes.count %><%= button_to "Upvote", scope: :vote, url: '/votes/new', vote_data: { review_id: review.id, user_id: current_user.id } %><br><br>
+        <% end %>
+
       <% end %>
     </div>
   </div>
@@ -85,13 +95,26 @@
     <div>
       <h3>User Reviews</h3>
       <% @reviews.each do |review| %>
-        <% if review.user.critic.nil? || review.user.critic == false %>
-          <%= review.votes.count %><%= button_to "Upvote", scope: :vote, url: '/votes/new', vote_data: { review_id: review.id, user_id: current_user.id } %>
+
+
+
+        <% if (review.user.critic.nil? || review.user.critic == false) %>
           <%= review.description %><br>
           <strong>Spud Score:</strong> <%= review.spud_score %><br>
           <strong><%= review.user.username %></strong><br>
-          <%= review.created_at %><br><br>
+          <%= review.created_at %><br>
+
+          <% if !current_user %>
+            <br>
+          <% end %>
+
         <% end %>
+
+
+        <% if current_user && (review.user.critic.nil? || review.user.critic == false) %>
+          <%= review.votes.count %><%= button_to "Upvote", scope: :vote, url: '/votes/new', vote_data: { review_id: review.id, user_id: current_user.id } %><br><br>
+        <% end %>
+
       <% end %>
     </div>
   </div>
