@@ -11,7 +11,7 @@
       <p>Released: <%= @movie.release_date %></p>
       <p><%= @movie.runtime %> mins</p>
       <p class="description"><%= @movie.overview %></p>
-      <%= image_tag "potatobig.png" %><strong>Spud Score: </strong><%=@spud_score%> || <strong> Total Reviews: </strong><%=@reviews.count%>
+      <%= image_tag "potatobig.png" %><strong>Spud Score: </strong><%=@spud_score%> || <strong> Total Reviews: </strong><%if @reviews%><%=@reviews.count%><% else %>0<% end %>
       <% if current_user %>
   <% if flash[:notice] %>
     <p style="color:red;"><%= flash[:notice] %></p>
@@ -65,7 +65,7 @@
     </div>
   </div>
 </div>
-<% if !@reviews.empty? %>
+<% if @reviews %>
 <div class="row">
   <div class="col-sm-6">
     <div class="critic-reviews">
